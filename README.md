@@ -2,3 +2,10 @@
 - ros package for multiple ultrasonic sensor
 - publishing range msgs at around 5 hz
 - MB7380 HRXL-MaxSonar-WRT is used in hardware
+- UTs are connected to pi at pins
+  - S0: Echo-17, Trig-27
+  - S1: Echo-22, Trig-05
+  - S2: Echo-06, Trig-13
+  - S1: Echo-19, Trig-26
+  - S1: Echo-21, Trig-20
+- NOTE: S0 is the left most and S4 is the right most
