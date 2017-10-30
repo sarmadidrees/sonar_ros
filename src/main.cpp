@@ -7,6 +7,7 @@
 #include "ros/time.h"
 #include "sensor_msgs/Range.h"
 
+//assigned pins for ultrasonic sensor
 #define ECHO_0 0
 #define ECHO_1 3
 #define ECHO_2 22
@@ -25,12 +26,14 @@ volatile double distance4 = 0.0;
 //volatile int y = 0;
 //volatile int z = 0;
 
+//initializing msg type to publish on ROS
 sensor_msgs::Range rangeMsg0;
 sensor_msgs::Range rangeMsg1;
 sensor_msgs::Range rangeMsg2;
 sensor_msgs::Range rangeMsg3;
 sensor_msgs::Range rangeMsg4;
 
+//to measure object distance in front of sonar0 
 void sonarCheck0 (void)
 {
 	volatile static double distance0_P = 0.30;
@@ -46,10 +49,10 @@ void sonarCheck0 (void)
 		if (distance0 < 0.30) distance0 = 0.30;
 		else if (distance0 > 5.00) distance0 = distance0_P;
 		distance0_P = distance0;
-	       //x = 1;
 	}
 }
 
+//to measure object distance in front of sonar1
 void sonarCheck1 (void)
 {
 	volatile static double distance1_P = 0.30;
@@ -65,10 +68,10 @@ void sonarCheck1 (void)
 			if (distance1 < 0.30) distance1 = 0.30;
 			else if (distance1 > 5.00) distance1 = distance1_P;
 			distance1_P =distance1;
-	       //x = 1;
 	}
 }
 
+//to measure object distance in front of sonar2
 void sonarCheck2 (void)
 {
 	volatile static double distance2_P = 0.30;
@@ -84,10 +87,10 @@ void sonarCheck2 (void)
 			if (distance2 < 0.30) distance2 = 0.30;
 			else if (distance2 > 5.00) distance2 = distance2_P;
 			distance2_P = distance2;
-	       //x = 1;
 	}
 }
 
+//to measure object distance in front of sonar3
 void sonarCheck3 (void)
 {
 	volatile static double distance3_P = 0.30;
@@ -103,10 +106,10 @@ void sonarCheck3 (void)
 			if (distance3 < 0.30) distance3 = 0.30;
 			else if (distance3 > 5.00) distance3 = distance3_P;
 			distance3_P = distance3;
-	       //x = 1;
 	}
 }
 
+//to measure object distance in front of sonar4
 void sonarCheck4 (void)
 {
 	volatile static double distance4_P = 0.30;
@@ -122,12 +125,11 @@ void sonarCheck4 (void)
 			if (distance4 < 0.30) distance4 = 0.30;
 			else if (distance4 > 5.00) distance4 = distance4_P;
 			distance4_P = distance4;
-	       //x = 1;
 	}
 }
 
+/*initialize every range msg*/
 void setupRangeMsg0(void){
-		//sensor_msgs::Range rangeMsg0;
 		rangeMsg0.header.stamp = ros::Time::now();
 		rangeMsg0.header.frame_id = "/sonar0";
 		rangeMsg0.radiation_type = 0,                     //0=ultrasonic, 1=IR
@@ -137,7 +139,6 @@ void setupRangeMsg0(void){
 }
 
 void setupRangeMsg1(void){
-		//sensor_msgs::Range rangeMsg1;
 		rangeMsg1.header.stamp = ros::Time::now();
 		rangeMsg1.header.frame_id = "/sonar1";
 		rangeMsg1.radiation_type = 0,                     //0=ultrasonic, 1=IR
@@ -147,7 +148,6 @@ void setupRangeMsg1(void){
 }
 
 void setupRangeMsg2(void){
-		//sensor_msgs::Range rangeMsg2;	
 		rangeMsg2.header.stamp = ros::Time::now();
 		rangeMsg2.header.frame_id = "/sonar2";
 		rangeMsg2.radiation_type = 0,                     //0=ultrasonic, 1=IR
@@ -157,7 +157,6 @@ void setupRangeMsg2(void){
 }
 
 void setupRangeMsg3(void){
-		//sensor_msgs::Range rangeMsg3;	
 		rangeMsg3.header.stamp = ros::Time::now();
 		rangeMsg3.header.frame_id = "/sonar3";
 		rangeMsg3.radiation_type = 0,                     //0=ultrasonic, 1=IR
@@ -167,7 +166,6 @@ void setupRangeMsg3(void){
 }
 
 void setupRangeMsg4(void){
-		//sensor_msgs::Range rangeMsg4;	
 		rangeMsg4.header.stamp = ros::Time::now();
 		rangeMsg4.header.frame_id = "/sonar4";
 		rangeMsg4.radiation_type = 0,                     //0=ultrasonic, 1=IR
@@ -176,6 +174,7 @@ void setupRangeMsg4(void){
 		rangeMsg4.max_range = 5.0;
 }
 
+//setting up threads for each ultrasonic sensor
 void setupWiringPi(void) {
         wiringPiSetup();
         pinMode(ECHO_0, INPUT);
@@ -191,6 +190,7 @@ void setupWiringPi(void) {
         wiringPiISR (ECHO_4, INT_EDGE_BOTH, &sonarCheck4);
 }
 
+//MAIN
 int main(int argc, char **argv) 
 {
 	setupWiringPi();
