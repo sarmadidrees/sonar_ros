@@ -1,7 +1,7 @@
-# sonar_ros
-- ros package for multiple ultrasonic sensor running simultaneously
-- publishing range msgs at around 5 hz
-- Hardware: MB7380 HRXL-MaxSonar-WRT as a ultrasonic sensor and Raspberry Pi as a main controller
+# ROS package to publish multiple RangeMsgs
+- A ROS package for multiple ultrasonic sensor running simultaneously
+- Publishing range msgs at around 5 hz
+- Hardware: MB7380 HRXL-MaxSonar-WRT as ultrasonic sensor and Raspberry Pi as a main controller
 - WiringPi Lib is used to create threads for each ultrasonic sensor
 - UTs are connected to pi3 at pins
   - S0: Echo-17, Trig-27
