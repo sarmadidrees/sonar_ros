@@ -14,7 +14,7 @@
 #define ECHO_3 24
 #define ECHO_4 29
 
-#define FOV 0.5
+#define FOV 0.5		//fake FOV
 
 volatile double distance0 = 0.0;
 volatile double distance1 = 0.0;
