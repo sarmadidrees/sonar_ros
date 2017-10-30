@@ -3,7 +3,7 @@
 - publishing range msgs at around 5 hz
 - Hardware: MB7380 HRXL-MaxSonar-WRT as a ultrasonic sensor and Raspberry Pi as a main controller
 - WiringPi Lib is used to create threads for each ultrasonic sensor
-- UTs are connected to pi at pins
+- UTs are connected to pi3 at pins
   - S0: Echo-17, Trig-27
   - S1: Echo-22, Trig-05
   - S2: Echo-06, Trig-13
