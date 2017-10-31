@@ -9,4 +9,6 @@
   - S2: Echo-06, Trig-13
   - S1: Echo-19, Trig-26
   - S1: Echo-21, Trig-20
-- NOTE: S0 is the left most and S4 is the right most
+- where: S0 is the left most and S4 is the right most
+
+#### NOTE : *this package requires super-user permission to work because it is using WiringPi Library to crearte thresds for each ultrasonic sensor*
