@@ -12,3 +12,6 @@
 - where: S0 is the left most and S4 is the right most
 
 #### NOTE : *this package requires super-user permission to work because it is using WiringPi Library to crearte thresds for each ultrasonic sensor*
+
+####Video Demonstraion
+![Integration of MaxBotix MB7380 MaxSonar into ROS](https://www.youtube.com/watch?v=7dzfr7vlPmI&feature=youtu.be)
